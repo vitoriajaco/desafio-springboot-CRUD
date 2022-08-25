@@ -5,8 +5,11 @@ import com.desafiogerenciadorcontas.gerenciadorDeContas.Enum.Status;
 import lombok.*;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
+import java.time.chrono.ChronoLocalDateTime;
 
 
 @Getter
@@ -18,6 +21,8 @@ import java.time.LocalDateTime;
 public class ContasAPagarModel {
 
     private Integer statusCodigo;
+
+    private Integer codigoTipo;
 
 
     @Id
@@ -37,6 +42,17 @@ public class ContasAPagarModel {
     @Column
     private LocalDateTime dataDePagamento;
     //LocalDate.now();
+
+    private static SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+    public ContasAPagarModel(String nome, Double valor, String tipoDePagamento, LocalDate dataDeVencimento, LocalDateTime dataDePagamento) {
+        this.nome = nome;
+        this.valor = valor;
+        this.tipoDePagamento = tipoDePagamento;
+        this.dataDeVencimento = dataDeVencimento;
+        this.dataDePagamento = dataDePagamento;
+    }
+
+
 
     public Status getStatusCodigo() throws IllegalAccessException {
         return Status.valueOf(statusCodigo);
