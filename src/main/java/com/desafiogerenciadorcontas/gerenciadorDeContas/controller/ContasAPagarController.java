@@ -3,6 +3,7 @@ package com.desafiogerenciadorcontas.gerenciadorDeContas.controller;
 import com.desafiogerenciadorcontas.gerenciadorDeContas.model.ContasAPagarModel;
 import com.desafiogerenciadorcontas.gerenciadorDeContas.service.ContasAPagarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,13 +16,14 @@ public class ContasAPagarController {
     private ContasAPagarService contasAPagarService;
 
     @GetMapping(path = "/contas")
-    public List<ContasAPagarModel> mostrarTodasAsContas() {
-        return contasAPagarService.mostrarTodasAsContas();
+    public ResponseEntity<List<ContasAPagarModel>> mostrarTodasAsContas() {
+        List<ContasAPagarModel> lista = contasAPagarService.mostrarTodasAsContas();
+        return ResponseEntity.ok(lista);
     }
 
     @GetMapping(path = "/contas/{codigo}")
-    public Optional<ContasAPagarModel> buscarPorId(@PathVariable Long codigo) {
-        return contasAPagarService.buscarPorId(codigo);
+    public ResponseEntity<Optional<ContasAPagarModel>>buscarPorId(@PathVariable Long codigo) {
+        return ResponseEntity.ok(contasAPagarService.buscarPorId(codigo));
     }
 
     @PostMapping(path ="/conta")

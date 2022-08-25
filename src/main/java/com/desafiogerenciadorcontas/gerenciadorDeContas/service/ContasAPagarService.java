@@ -45,7 +45,6 @@ public class ContasAPagarService {
         return contasAPagarRepository.save(contasAPagarModel);
     }
 
-
     public void deletar(Long codigo) {
         contasAPagarRepository.deleteById(codigo);
     }
