@@ -5,19 +5,17 @@ import com.desafiogerenciadorcontas.gerenciadorDeContas.Enum.Status;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+
 public class VerificaStatusConta {
 
-    public Status processaStatus(LocalDate dataDeVencimento, LocalDateTime dataDePagamento) {
+    public Status processaStatus(LocalDate dataDeVencimento) {
 
         if (dataDeVencimento.isBefore(LocalDate.now())) {
             return Status.VENCIDA;
+        } else {
+            return Status.AGUARDANDO;
         }
-
-        if (dataDePagamento.isAfter(LocalDateTime.now())) {
-            return Status.PAGO;
-
-        }
-        return Status.AGUARDANDO;
 
     }
+
 }

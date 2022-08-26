@@ -38,10 +38,20 @@ public class ContasAPagarModel {
     @Column
     private Tipo tipo;
 
+    @Enumerated
     private Status status;
 
 
     private static SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
-}
+
+
+
+    public Object setDataDePagamento(LocalDateTime now) {
+        return LocalDateTime.now();
+    }
+
+
+    }
+
 
 
