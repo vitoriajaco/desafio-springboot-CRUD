@@ -48,10 +48,11 @@ public class ContasAPagarService {
 
     public ContasAPagarModel alterarContas(ContasAPagarModel contasAPagarModel, Long codigo){
             if (contasAPagarModel.getStatus().equals(Status.PAGO)){
-                LocalDateTime hoje = LocalDateTime.now();
-                contasAPagarModel.setDataDePagamento(hoje);
+                //LocalDateTime hoje = LocalDateTime.now();
+                contasAPagarModel.setDataDePagamento(LocalDateTime.now());
+                return contasAPagarRepository.save(contasAPagarModel);
         }
-            return contasAPagarRepository.save(contasAPagarModel);
+            return null;
 
     }
 

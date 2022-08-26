@@ -15,7 +15,7 @@ public class VerificaStatusConta {
         } else {
             return Status.AGUARDANDO;
         }
-
     }
+
 
 }

@@ -46,11 +46,6 @@ public class ContasAPagarModel {
 
 
 
-    public Object setDataDePagamento(LocalDateTime now) {
-        return LocalDateTime.now();
-    }
-
-
     }
 
 
