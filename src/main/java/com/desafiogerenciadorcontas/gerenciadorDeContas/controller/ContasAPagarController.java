@@ -35,8 +35,8 @@ public class ContasAPagarController {
     }
 
     @PutMapping(path ="/contas/{codigo}")
-    public ResponseEntity<ContasAPagarModel> alterarContas(@PathVariable Long codigo, @RequestBody ContasAPagarModel contasAPagarModel, ContaPaga contapaga) {
-        return ResponseEntity.ok(contasAPagarService.alterarContas(contasAPagarModel, codigo));
+    public ResponseEntity<ContasAPagarModel> alterarContas(@PathVariable Long codigo, @RequestBody String status) {
+        return ResponseEntity.ok(contasAPagarService.alterarContas(status, codigo));
     }
 
     @DeleteMapping(path = "/contas/{codigo}")

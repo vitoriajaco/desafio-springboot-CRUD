@@ -46,13 +46,13 @@ public class ContasAPagarService {
         return contasAPagarRepository.save(contasAPagarModel);
     }
 
-    public ContasAPagarModel alterarContas(ContasAPagarModel contasAPagarModel, Long codigo){
-            if (contasAPagarModel.getStatus().equals(Status.PAGO)){
-                //LocalDateTime hoje = LocalDateTime.now();
-                contasAPagarModel.setDataDePagamento(LocalDateTime.now());
-                return contasAPagarRepository.save(contasAPagarModel);
-        }
-            return null;
+    public ContasAPagarModel alterarContas(String status, Long codigo){
+        Optional<ContasAPagarModel> contasAPagarModel = contasAPagarRepository.findById(codigo);
+             if (status.contains("PAGO") ) {
+                 contasAPagarModel.get().setStatus(Status.PAGO);
+                 contasAPagarModel.get().setDataDePagamento(LocalDateTime.now());
+                return contasAPagarRepository.save(contasAPagarModel.get());
+        } else return null;
 
     }
 
