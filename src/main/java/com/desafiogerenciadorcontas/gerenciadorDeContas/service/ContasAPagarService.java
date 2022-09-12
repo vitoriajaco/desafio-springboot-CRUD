@@ -57,7 +57,10 @@ public class ContasAPagarService {
     }
 
     public void deletar(Long codigo) {
+
         contasAPagarRepository.deleteById(codigo);
     }
+
+
 }
 //

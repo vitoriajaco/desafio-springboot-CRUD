@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
+
 @Getter
 @Setter
 @Entity
@@ -24,18 +25,19 @@ public class ContasAPagarModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
-    @Column
+    @Column (length = 50, nullable = false)
+
     private String nome;
 
-    @Column
+    @Column (nullable = false)
     private LocalDate dataDeVencimento;
 
     @Column
     private LocalDateTime dataDePagamento;
-    @Column
+    @Column ( nullable = false)
     private Double valor;
 
-    @Column
+    @Column (nullable = false)
     private Tipo tipo;
 
     @Enumerated

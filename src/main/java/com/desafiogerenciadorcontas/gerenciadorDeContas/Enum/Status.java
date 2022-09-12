@@ -5,6 +5,8 @@ public enum Status {
     PAGO(2),
     VENCIDA(3);
 
+
+
     private int codigoStatus;
 
     private Status (int codigoStatus){
