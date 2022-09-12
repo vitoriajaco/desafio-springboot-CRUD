@@ -1,4 +1,4 @@
-package com.desafiogerenciadorcontas.gerenciadorDeContas.model;
+package com.desafiogerenciadorcontas.gerenciadorDeContas.model.usuario;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

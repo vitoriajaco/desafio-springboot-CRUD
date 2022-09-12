@@ -1,4 +1,4 @@
-package com.desafiogerenciadorcontas.gerenciadorDeContas.model;
+package com.desafiogerenciadorcontas.gerenciadorDeContas.model.usuario;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -19,9 +19,6 @@ public class UsuarioModelDTO {
     private Date dataNascimento;
     private String email;
 
-    public Long getId() {
-        return id;
-    }
 
 
     }
