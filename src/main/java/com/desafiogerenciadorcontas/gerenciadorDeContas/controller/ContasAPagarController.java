@@ -1,8 +1,7 @@
 package com.desafiogerenciadorcontas.gerenciadorDeContas.controller;
 
-import com.desafiogerenciadorcontas.gerenciadorDeContas.Enum.Status;
 import com.desafiogerenciadorcontas.gerenciadorDeContas.model.ContaPaga;
-import com.desafiogerenciadorcontas.gerenciadorDeContas.model.ContasAPagarModel;
+import com.desafiogerenciadorcontas.gerenciadorDeContas.model.VerificaStatusConta;
 import com.desafiogerenciadorcontas.gerenciadorDeContas.service.ContasAPagarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,18 +23,18 @@ public class ContasAPagarController {
     }
 
     @GetMapping(path = "/contas/{codigo}")
-    public ResponseEntity<Optional<ContasAPagarModel>>buscarPorId(@PathVariable Long codigo) {
+    public ResponseEntity<Optional<VerificaStatusConta.ContasAPagarModel>>buscarPorId(@PathVariable Long codigo) {
         return ResponseEntity.ok(contasAPagarService.buscarPorId(codigo));
     }
 
     @PostMapping(path ="/contas")
-    public ContasAPagarModel cadastarContas(@RequestBody ContasAPagarModel contasAPagarModel) {
-        ContasAPagarModel conta = contasAPagarService.cadastrarContas(contasAPagarModel);
+    public VerificaStatusConta.ContasAPagarModel cadastarContas(@RequestBody VerificaStatusConta.ContasAPagarModel contasAPagarModel) {
+        VerificaStatusConta.ContasAPagarModel conta = contasAPagarService.cadastrarContas(contasAPagarModel);
         return contasAPagarService.cadastrarContas(contasAPagarModel);
     }
 
     @PutMapping(path ="/contas/{codigo}")
-    public ResponseEntity<ContasAPagarModel> alterarContas(@PathVariable Long codigo, @RequestBody String status) {
+    public ResponseEntity<VerificaStatusConta.ContasAPagarModel> alterarContas(@PathVariable Long codigo, @RequestBody String status) {
         return ResponseEntity.ok(contasAPagarService.alterarContas(status, codigo));
     }
 
