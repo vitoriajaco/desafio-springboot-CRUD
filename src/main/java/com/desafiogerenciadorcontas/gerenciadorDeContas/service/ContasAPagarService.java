@@ -2,6 +2,7 @@ package com.desafiogerenciadorcontas.gerenciadorDeContas.service;
 
 import com.desafiogerenciadorcontas.gerenciadorDeContas.Enum.Status;
 import com.desafiogerenciadorcontas.gerenciadorDeContas.model.ContaPaga;
+import com.desafiogerenciadorcontas.gerenciadorDeContas.model.ContasAPagarModel;
 import com.desafiogerenciadorcontas.gerenciadorDeContas.model.VerificaStatusConta;
 import com.desafiogerenciadorcontas.gerenciadorDeContas.repository.ContasAPagarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,9 @@ public class ContasAPagarService {
 
 
     public List<ContaPaga> mostrarTodasAsContas() {
-        List<VerificaStatusConta.ContasAPagarModel> lista = contasAPagarRepository.findAll();
+        List<ContasAPagarModel> lista = contasAPagarRepository.findAll();
         List<ContaPaga> listaConta = new ArrayList<>();
-        for (VerificaStatusConta.ContasAPagarModel contasAPagarModel : lista){
+        for (ContasAPagarModel contasAPagarModel : lista){
             ContaPaga contaPaga = new ContaPaga();
             contaPaga.setCodigo(contasAPagarModel.getCodigo());
             contaPaga.setNome(contasAPagarModel.getNome());
@@ -34,32 +35,28 @@ public class ContasAPagarService {
         return listaConta;
     }
 
-    public Optional<VerificaStatusConta.ContasAPagarModel> buscarPorId(Long codigo) {
+    public Optional<ContasAPagarModel> buscarPorId(Long codigo) {
         return contasAPagarRepository.findById(codigo);
     }
 
-    public VerificaStatusConta.ContasAPagarModel cadastrarContas(VerificaStatusConta.ContasAPagarModel contasAPagarModel) {
+    public ContasAPagarModel cadastrarContas(ContasAPagarModel contasAPagarModel) {
         VerificaStatusConta verificaStatusConta = new VerificaStatusConta();
         Status status = verificaStatusConta.processaStatus(contasAPagarModel.getDataDeVencimento());
         contasAPagarModel.setStatus(status);
         return contasAPagarRepository.save(contasAPagarModel);
     }
 
-    public VerificaStatusConta.ContasAPagarModel alterarContas(String status, Long codigo){
-        Optional<VerificaStatusConta.ContasAPagarModel> contasAPagarModel = contasAPagarRepository.findById(codigo);
-             if (status.contains("PAGO") ) {
-                 contasAPagarModel.get().setStatus(Status.PAGO);
-                 contasAPagarModel.get().setDataDePagamento(LocalDateTime.now());
-                return contasAPagarRepository.save(contasAPagarModel.get());
+    public ContasAPagarModel alterarContas(String status, Long codigo){
+        Optional<ContasAPagarModel> contasAPagarModel = contasAPagarRepository.findById(codigo);
+        if (status.contains("PAGO") ) {
+            contasAPagarModel.get().setStatus(Status.PAGO);
+            contasAPagarModel.get().setDataDePagamento(LocalDateTime.now());
+            return contasAPagarRepository.save(contasAPagarModel.get());
         } else return null;
 
     }
 
     public void deletar(Long codigo) {
-
         contasAPagarRepository.deleteById(codigo);
     }
-
-
 }
-//

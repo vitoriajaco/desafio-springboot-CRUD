@@ -4,6 +4,7 @@ import com.desafiogerenciadorcontas.gerenciadorDeContas.Enum.Status;
 import lombok.*;
 
 
+import javax.persistence.Entity;
 import java.time.LocalDateTime;
 
 
