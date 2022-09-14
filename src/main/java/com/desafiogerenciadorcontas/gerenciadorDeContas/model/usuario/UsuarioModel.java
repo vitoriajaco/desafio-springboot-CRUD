@@ -1,9 +1,14 @@
 package com.desafiogerenciadorcontas.gerenciadorDeContas.model.usuario;
 
+import com.desafiogerenciadorcontas.gerenciadorDeContas.model.endereco.Endereco;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -11,14 +16,19 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-public class UsuarioModel {
+@Table(name = "usuario")
+public class UsuarioModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long usuario_id;
     private String nomeUsuario;
     private Date dataNascimento;
     private String email;
     private String cpf;
+
+    @JsonIgnore
+    @OneToMany (mappedBy = "usuarioModel", cascade = CascadeType.ALL)
+    private List<Endereco>enderecos = new ArrayList<>();
 }
