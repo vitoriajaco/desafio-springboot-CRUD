@@ -17,16 +17,16 @@ import java.io.Serializable;
 public class Endereco implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long endereco_id;
+    private Long id;
     private String logradouro;
     private String bairro;
     private String cep;
     private String pontoReferencia;
-
     @ManyToOne
-    private UsuarioModel usuarioModel;
-
+    @JoinColumn(name = "usuarioModel", referencedColumnName = "id")
+    private UsuarioModel usuarioModel; // varios enderecos para um cliente
     @ManyToOne
+    @JoinColumn (name = "cidade_id", referencedColumnName = "id")
     private Cidade cidade;
 
 }

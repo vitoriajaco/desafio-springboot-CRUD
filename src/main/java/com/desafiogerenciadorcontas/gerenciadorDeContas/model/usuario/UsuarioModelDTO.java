@@ -17,7 +17,7 @@ public class UsuarioModelDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long usuario_id;
+    private Long id;
 
     private String nomeUsuario;
     private Date dataNascimento;

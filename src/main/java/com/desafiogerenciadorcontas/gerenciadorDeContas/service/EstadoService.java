@@ -23,14 +23,14 @@ public class EstadoService {
     }
 
     public Estado cadastrarEstado (Estado estado){
-        estado.getEstado_id();
+        estado.getId();
         estado.getNomeEstado();
         estado.getUf();
         return estadoRepository.save(estado);
     }
 
     public Estado alterarEstado (Estado estado){
-        estado.getEstado_id();
+        estado.getId();
         estado.setNomeEstado(estado.getNomeEstado());
         return estadoRepository.save(estado);
     }

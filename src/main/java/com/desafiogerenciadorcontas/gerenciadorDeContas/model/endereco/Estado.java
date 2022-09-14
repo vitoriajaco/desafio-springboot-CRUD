@@ -17,7 +17,7 @@ import java.util.List;
 public class Estado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long estado_id;
+    private Long id;
     private String uf;
     private String nomeEstado;
 

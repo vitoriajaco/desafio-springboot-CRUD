@@ -1,7 +1,6 @@
 package com.desafiogerenciadorcontas.gerenciadorDeContas.service;
 
 import com.desafiogerenciadorcontas.gerenciadorDeContas.model.endereco.Cidade;
-import com.desafiogerenciadorcontas.gerenciadorDeContas.model.endereco.Endereco;
 import com.desafiogerenciadorcontas.gerenciadorDeContas.repository.CidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,13 +22,13 @@ public class CidadeService {
     }
 
     public Cidade cadastarCidade (Cidade cidade){
-        cidade.getCidade_id();
+        cidade.getId();
         cidade.getNomeCidade();
         return cidadeRepository.save(cidade);
     }
 
     public Cidade alterarCidade (Cidade cidade){
-        cidade.getCidade_id();
+        cidade.getId();
         cidade.setNomeCidade(cidade.getNomeCidade());
         return cidadeRepository.save(cidade);
     }

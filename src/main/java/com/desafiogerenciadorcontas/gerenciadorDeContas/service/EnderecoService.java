@@ -23,7 +23,7 @@ public class EnderecoService {
     }
 
     public Endereco cadastrarEndereco(Endereco endereco) {
-    endereco.getEndereco_id();
+    endereco.getId();
     endereco.getLogradouro();
     endereco.getBairro();
     endereco.getPontoReferencia();
@@ -31,7 +31,7 @@ public class EnderecoService {
         return enderecoRepository.save(endereco);
     }
     public Endereco alterar(Endereco endereco) {
-    endereco.getEndereco_id();
+    endereco.getId();
     endereco.setBairro(endereco.getBairro());
     endereco.setLogradouro(endereco.getLogradouro());
     endereco.setPontoReferencia(endereco.getPontoReferencia());

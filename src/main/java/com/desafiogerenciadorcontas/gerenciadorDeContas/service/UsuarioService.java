@@ -23,7 +23,7 @@ public class UsuarioService {
     }
 
     public UsuarioModel cadastrarUsuario(UsuarioModel usuarioModel) {
-        usuarioModel.getUsuario_id();
+        usuarioModel.getId();
         usuarioModel.getDataNascimento();
         usuarioModel.getEmail();
 
