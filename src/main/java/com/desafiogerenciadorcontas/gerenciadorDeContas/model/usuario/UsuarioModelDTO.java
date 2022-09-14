@@ -23,8 +23,11 @@ public class UsuarioModelDTO {
     private Date dataNascimento;
     private String email;
 
-
-
+    public UsuarioModelDTO(String nomeUsuario, Date dataNascimento, String email) {
+        this.nomeUsuario = nomeUsuario;
+        this.dataNascimento = dataNascimento;
+        this.email = email;
     }
+}
 
 

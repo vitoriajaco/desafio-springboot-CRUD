@@ -18,15 +18,23 @@ public class Endereco implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String logradouro;
+
+    @Column
     private String bairro;
+
+    @Column
     private String cep;
+
+    @Column
     private String pontoReferencia;
     @ManyToOne
-    @JoinColumn(name = "usuarioModel", referencedColumnName = "id")
-    private UsuarioModel usuarioModel; // varios enderecos para um cliente
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private UsuarioModel usuario_id; // varios enderecos para um cliente
     @ManyToOne
     @JoinColumn (name = "cidade_id", referencedColumnName = "id")
-    private Cidade cidade;
+    private Cidade cidade_id;
 
 }

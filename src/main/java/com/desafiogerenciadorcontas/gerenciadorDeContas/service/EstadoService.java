@@ -23,9 +23,6 @@ public class EstadoService {
     }
 
     public Estado cadastrarEstado (Estado estado){
-        estado.getId();
-        estado.getNomeEstado();
-        estado.getUf();
         return estadoRepository.save(estado);
     }
 

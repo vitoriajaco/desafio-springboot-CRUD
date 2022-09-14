@@ -18,10 +18,12 @@ public class Estado implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String uf;
+    @Column
     private String nomeEstado;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "estado", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "estado_id", cascade = CascadeType.ALL)
     private List<Cidade> cidade;
 }

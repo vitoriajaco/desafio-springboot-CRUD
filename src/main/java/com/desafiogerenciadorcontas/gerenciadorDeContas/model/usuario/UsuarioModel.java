@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -23,14 +24,20 @@ public class UsuarioModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+    @Column
     private String nomeUsuario;
-    private Date dataNascimento;
-    private String email; // validation
-    private String cpf; // validation
+    @Column
+    private String dataNascimento;
+    @Column(nullable = false)
+    @Email(regexp=".+@.+\\..+")
+    private String email;
+    @Column(nullable = false)
+    @Size(min = 11, max = 11)
+    private String cpf;
 
     @JsonIgnore
-    @OneToMany (mappedBy = "usuarioModel", cascade = CascadeType.ALL)
-    private List<Endereco>enderecos = new ArrayList<>();
+    @OneToMany (mappedBy = "usuario_id", cascade = CascadeType.ALL)
+    private List<Endereco> endereco_id = new ArrayList<>();
 
     @OneToMany(mappedBy = "usuarioModel", cascade = CascadeType.ALL)
     private List<ContasReceber> contasReceber = new ArrayList<>();

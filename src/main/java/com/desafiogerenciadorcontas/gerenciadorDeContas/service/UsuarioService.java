@@ -23,9 +23,7 @@ public class UsuarioService {
     }
 
     public UsuarioModel cadastrarUsuario(UsuarioModel usuarioModel) {
-        usuarioModel.getId();
-        usuarioModel.getDataNascimento();
-        usuarioModel.getEmail();
+
 
        return usuarioRepository.save(usuarioModel);
 

@@ -31,7 +31,6 @@ public class ContasReceber implements Serializable {
     private String status;
     @Column
     private BigDecimal valorRecebimento;
-    @Enumerated
     @Column @NotNull
     private TipoRecebido tipoRecebido;
     @Column @NotNull

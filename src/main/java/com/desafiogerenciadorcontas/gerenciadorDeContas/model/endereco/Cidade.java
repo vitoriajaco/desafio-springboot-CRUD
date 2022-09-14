@@ -20,9 +20,10 @@ public class Cidade implements Serializable {
     private String nomeCidade;
 
     @ManyToOne
-    private Estado estado;
+    @JoinColumn(name = "estado_id", referencedColumnName = "id")
+    private Estado estado_id;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cidade", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cidade_id", cascade = CascadeType.ALL)
     private List<Endereco> enderecos;
 }

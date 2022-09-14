@@ -1,18 +1,26 @@
 package com.desafiogerenciadorcontas.gerenciadorDeContas.model.pagamento;
 
+import com.desafiogerenciadorcontas.gerenciadorDeContas.Enum.RecebimentoAlugueis;
 import com.desafiogerenciadorcontas.gerenciadorDeContas.model.usuario.ContasReceber;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class PagamentoFactory {
 
     ContasReceber contasReceber;
 
-    public Object calculoPagamento(String recebimentoAlugueis) {
-        if (recebimentoAlugueis.equalsIgnoreCase("EM_ATRASO")) {
-            return new PagamentoAtrasado();
-        }
-        if (recebimentoAlugueis.equalsIgnoreCase("ADIANTADO")) {
+    public CalculoPagamento calculoPagamento(LocalDate dataDeVencimento, LocalDateTime dataDeRecebimento) {
+        if (dataDeVencimento.isBefore(dataDeRecebimento.toLocalDate())) {
             return new PagamentoAdiantado();
-        } else return contasReceber.getValorRecebimento();
+        }
+        if (dataDeVencimento.isAfter(dataDeRecebimento.toLocalDate())) {
+            return new PagamentoAtrasado();
+        } else if (dataDeVencimento.equals(dataDeRecebimento.toLocalDate())) {
+            return new PagamentoEmDia();
 
+        }
+
+        return null;
     }
 }
