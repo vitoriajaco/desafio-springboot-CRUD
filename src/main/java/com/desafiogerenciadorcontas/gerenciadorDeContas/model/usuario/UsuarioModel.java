@@ -25,12 +25,13 @@ public class UsuarioModel implements Serializable {
     private Long id;
     private String nomeUsuario;
     private Date dataNascimento;
-    private String email;
-    private String cpf;
+    private String email; // validation
+    private String cpf; // validation
 
     @JsonIgnore
     @OneToMany (mappedBy = "usuarioModel", cascade = CascadeType.ALL)
     private List<Endereco>enderecos = new ArrayList<>();
 
-    //ele recebe o ContasAReceber nao esquecer
+    @OneToMany(mappedBy = "usuarioModel", cascade = CascadeType.ALL)
+    private List<ContasReceber> contasReceber = new ArrayList<>();
 }

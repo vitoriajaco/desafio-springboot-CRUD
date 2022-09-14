@@ -1,6 +1,6 @@
 package com.desafiogerenciadorcontas.gerenciadorDeContas.Enum;
 
-public enum TipoRecebimento {
+public enum TipoRecebido {
 
     ALUGUEIS,
     EMPREGO_CLT,
