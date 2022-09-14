@@ -8,15 +8,14 @@ import java.time.LocalDateTime;
 
 public class PagamentoFactory {
 
-    ContasReceber contasReceber;
 
-    public CalculoPagamento calculoPagamento(LocalDate dataDeVencimento, LocalDateTime dataDeRecebimento) {
-        if (dataDeVencimento.isBefore(dataDeRecebimento.toLocalDate())) {
+    public CalculoPagamento calculoPagamento(LocalDate dataDeVencimento, LocalDate dataDeRecebimento) {
+        if (dataDeVencimento.isBefore(dataDeRecebimento)) {
             return new PagamentoAdiantado();
         }
-        if (dataDeVencimento.isAfter(dataDeRecebimento.toLocalDate())) {
+        if (dataDeVencimento.isAfter(dataDeRecebimento)) {
             return new PagamentoAtrasado();
-        } else if (dataDeVencimento.equals(dataDeRecebimento.toLocalDate())) {
+        } else if (dataDeVencimento.equals(dataDeRecebimento)) {
             return new PagamentoEmDia();
 
         }

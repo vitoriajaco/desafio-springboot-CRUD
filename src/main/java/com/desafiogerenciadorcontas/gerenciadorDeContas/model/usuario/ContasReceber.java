@@ -12,7 +12,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -24,7 +23,7 @@ public class ContasReceber implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long contasAReceber_id;
+    private Long id;
     @Column
     private String recebimento;
 
@@ -36,11 +35,10 @@ public class ContasReceber implements Serializable {
     @Column @NotNull
     private LocalDate dataDeVencimento;
     @Column
-    private LocalDateTime dataDeRecebimento;
-    @Column
-    private Long usuario_id; // observar se esta certo
+    private LocalDate dataDeRecebimento;
+
 
     @ManyToOne
-    @JoinColumn(name = "usuarioModel", referencedColumnName = "id")
-    private UsuarioModel usuarioModel;
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private UsuarioModel usuario_id;
 }

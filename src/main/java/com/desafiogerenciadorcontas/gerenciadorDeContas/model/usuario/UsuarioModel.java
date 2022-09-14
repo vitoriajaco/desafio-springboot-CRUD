@@ -22,7 +22,7 @@ public class UsuarioModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column( nullable = false)
     private Long id;
     @Column
     private String nomeUsuario;
@@ -39,6 +39,6 @@ public class UsuarioModel implements Serializable {
     @OneToMany (mappedBy = "usuario_id", cascade = CascadeType.ALL)
     private List<Endereco> endereco_id = new ArrayList<>();
 
-    @OneToMany(mappedBy = "usuarioModel", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuario_id", cascade = CascadeType.ALL)
     private List<ContasReceber> contasReceber = new ArrayList<>();
 }
