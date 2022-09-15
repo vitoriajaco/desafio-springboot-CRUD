@@ -39,6 +39,7 @@ public class UsuarioModel implements Serializable {
     @OneToMany (mappedBy = "usuario_id", cascade = CascadeType.ALL)
     private List<Endereco> endereco_id = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario_id", cascade = CascadeType.ALL)
     private List<ContasReceber> contasReceber = new ArrayList<>();
 }

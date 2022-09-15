@@ -11,10 +11,10 @@ public class PagamentoFactory {
 
     public CalculoPagamento calculoPagamento(LocalDate dataDeVencimento, LocalDate dataDeRecebimento) {
         if (dataDeVencimento.isBefore(dataDeRecebimento)) {
-            return new PagamentoAdiantado();
+            return new PagamentoAtrasado();
         }
         if (dataDeVencimento.isAfter(dataDeRecebimento)) {
-            return new PagamentoAtrasado();
+            return new PagamentoAdiantado();
         } else if (dataDeVencimento.equals(dataDeRecebimento)) {
             return new PagamentoEmDia();
 
